@@ -1,0 +1,63 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      >
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+        <center>
+            <h2>Lista de Ventas</h2>
+            
+            <h:form id="fr1">
+                <p:dataTable value="#{control1.lisven}"  var="ven" 
+                             paginator="true" rows="4">
+                    <p:column headerText="Id Venta">
+                        <p:outputLabel value="#{ven.id}"/>   
+                    </p:column>
+                    <p:column headerText="Id Cliente">
+                        <p:outputLabel value="#{ven.idCliente}"/>   
+                    </p:column>
+                <p:column headerText="Id Empleado">
+                    <p:outputLabel value="#{ven.idEmpleado}"/>   
+                </p:column>
+                <p:column headerText="Monto">
+                    <p:outputLabel value="#{ven.monto}"/>   
+                </p:column>
+                <p:column headerText="Datos Cliente">    
+                    <p:commandLink value="ver Datos cliente"
+                                   actionListener="#{control1.verCliente(ven)}" update=":fr2"/>                
+                </p:column>
+                </p:dataTable>
+            </h:form>     
+            <h:form id="fr2">
+                <p:outputLabel value="Datos del cliente"/>
+                <p:dataTable value="#{control1.liscli}" var="cli">
+                    <p:column headerText="Id cliente">
+                        <p:outputLabel value="#{cli.id}"/>    
+                    </p:column>
+                    <p:column headerText="Dni">
+                        <p:outputLabel value="#{cli.dni}"/>    
+                    </p:column>
+                    <p:column headerText="Nombres">
+                        <p:outputLabel value="#{cli.nom}"/>    
+                    </p:column>
+                    <p:column headerText="Dirección">
+                        <p:outputLabel value="#{cli.direc}"/>    
+                    </p:column>
+                    <p:column headerText="Estado">
+                        <p:outputLabel value="#{cli.estado}"/>    
+                    </p:column>
+                 </p:dataTable>   
+                
+            </h:form>   
+            
+        </center>
+    </h:body>
+</html>
+
+
+
